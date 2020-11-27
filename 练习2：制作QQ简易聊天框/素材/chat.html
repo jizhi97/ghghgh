@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>QQ简易聊天框</title>
+    <link rel="stylesheet" href="css/chat.css">
+
+    <style>
+        .chat_list{
+            overflow: hidden;
+        }
+        .chat_list>img{
+            float: left;
+        }
+        .nickname{
+            float: left;
+            width: 380px;
+        }
+        .content{
+            width: 380px;
+            float: left;
+            padding: 10px;
+            box-sizing: border-box;
+            background-color:#ccc;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <section id="chat">
+        <div class="chatBody">
+            
+        </div>
+        <div><img src="images/icon.jpg"></div>
+        <textarea class="chatText"></textarea>
+        <div class="btn"><span>关闭(C)</span><span id="send">发送(S)</span></div>
+    </section>
+    <script src="js/jquery-1.12.4.js"></script>
+    
+</body>
+    <script>
+        var $name = ['小黑','小绿','小红','小白','小蓝'];
+        var $img = ['head01.jpg','head02.jpg','head03.jpg'];
+        $('#send').on('click',function(){
+            var img_ = '<img src="./images/'+$img[parseInt(Math.random()*3)]+'" alt="">';
+            
+            var name_ = '<div class="nickname">'+$name[parseInt(Math.random()*5)]+'</div>';
+
+            var cont = '<div class="content">'+$('.chatText').val()+'</div>';
+
+            var chat_1 = '<div class="chat_list">'+img_+name_+cont+'</div>';
+
+            var old_html = $('.chatBody').html();
+
+            $('.chatBody').html(old_html+chat_1);
+
+            $('.chatText').val('');
+        })
+    </script>
+</html>

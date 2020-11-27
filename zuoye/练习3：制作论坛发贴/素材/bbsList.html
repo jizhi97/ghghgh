@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>论坛列表</title>
+    <link href="css/bbs.css" rel="stylesheet">
+</head>
+<body>
+<div class="bbs">
+    <header><span>我要发帖</span></header>
+    <section>
+        <ul></ul>
+    </section>
+    <div class="post">
+        <input class="title" placeholder="请输入标题（1-50个字符）">
+        所属版块：<select><option>请选择版块</option><option>电子书籍</option><option>新课来了</option><option>新手报到</option><option>职业规划</option></select>
+        <textarea class="content"></textarea>
+        <input class="btn" value="发布">
+    </div>
+</div>
+    <script src="./js/jquery-1.12.4.js"></script>
+    <script>
+        var img_arr = ['tou01.jpg','tou02.jpg','tou03.jpg','tou04.jpg'];
+
+        $('header>span').on('click',function(){
+            $('.post').show();
+        });
+
+        $('.btn').on('click',function(){
+            $('.post').hide();
+            var lis = $('<li>');
+                $('ul').append(lis);
+            
+            var title_ = $('.title').val();
+            var head_ = $('select').val();
+            var txt = new Date();
+            var time_ = txt.getFullYear()+"-"+parseInt(txt.getMonth()+1)+"-"+txt.getDate()+" "+txt.getHours()+":"+txt.getMinutes();
+           
+            var $div = $('<div>');
+                $(lis).append($div);
+
+            var  $img = $('<img>').attr('src','./images/'+img_arr[parseInt(Math.random()*4)],'alt');
+                $($div).append($img);
+
+            var $h = $('<h1>').text(title_);
+                $(lis).append($h);
+
+            var $p = $('<p>').text('版块:'+head_);
+                $(lis).append($p);
+
+            var $span = $('<span>').text('发布时间:'+time_);
+                $($p).append($span);
+            
+
+           $('.title').val('');
+           $('select').val('');
+           $('.content').val('');
+
+
+        })
+    </script>
+</body>
+</html>
