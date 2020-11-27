@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        if(window.XMLHttpRequest){
+            var $lol=new XMLHttpRequest();
+        }else{
+            var $lol= new ActiveXObject('Microsoft.XMLHTTP');
+        }
+
+        $lol.open('get','./re.txt',true);
+
+        $lol.send();
+
+        $lol.onreadystatechange=function(){
+            if($lol.readyState==4&&$lol.status==200){
+               
+
+                console.log($lol.responseText);
+            }
+        }
+    </script>
+</body>
+</html>

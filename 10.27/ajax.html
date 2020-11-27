@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        
+        
+        if(window.XMLHttpRequest){
+            var $ajax= new XMLHttpRequest();
+        }else{
+            var $ajax= new ActiveXObject('Microsoft.XMLHTTP');
+        }
+        $ajax.open('post','http://127.0.0.1:3001/user',true);
+
+        var arr='act=reg&user=wangxioaer&pass=123456789';
+        
+        $ajax.send(arr);
+
+        $ajax.onreadystatechange=function(){
+            if($ajax.readyState==4 && $ajax.status==200){
+                var data=$ajax.responseText;
+                data=JSON.parse(data);
+                console.log(data);
+            }
+        }
+    </script>
+</body>
+</html>
